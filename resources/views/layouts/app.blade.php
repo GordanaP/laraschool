@@ -11,7 +11,14 @@
         @include('partials.top._nav')
 
         <div class="container">
-            @yield('content')
+            <div class="row">
+                <div class="col-md-8">
+                    @yield('content')
+                </div>
+                <div class="col-md-4">
+                    Sidebar
+                </div>
+            </div>
         </div>
     </div>
 

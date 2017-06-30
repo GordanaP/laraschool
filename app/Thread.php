@@ -10,6 +10,11 @@ class Thread extends Model
         'title', 'body'
     ];
 
+    public function path($name)
+    {
+        return route('threads.'.$name, $this->id);
+    }
+
     public function replies()
     {
         return $this->hasMany(Reply::class());

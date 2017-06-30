@@ -24,6 +24,11 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="{{ route('threads.index') }}">
+                    <i class="icon_group"></i> Forum
+                </a></li>
+
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Login</a></li>
