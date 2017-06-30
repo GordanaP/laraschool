@@ -8,7 +8,7 @@
             <a href="#">
                 {{ $thread->user->name }}
             </a>
-            {{ $thread->created_at->format('Y-M-d') }}
+            {{ $thread->created_format }}
         </p>
     </div>
 

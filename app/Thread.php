@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\TimeAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
+    use TimeAttributes;
+
     protected $fillable = [
         'title', 'body'
     ];
@@ -24,6 +27,8 @@ class Thread extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
 
 }
 

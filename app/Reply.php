@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\TimeAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
+    use TimeAttributes;
+
     protected $fillable = [
         'body'
     ];

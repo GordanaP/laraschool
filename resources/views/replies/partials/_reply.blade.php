@@ -3,7 +3,7 @@
         <a href="#">
             {{ $reply->user->name }}
         </a>
-        {{ $reply->created_at->diffForHumans() }}
+        {{ $reply->created }}
     </div>
     <div class="panel-body">
         {{ $reply->body }}
