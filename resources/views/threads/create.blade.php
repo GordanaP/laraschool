@@ -18,17 +18,12 @@
 
                 {{ csrf_field() }}
 
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title"  class="form-control" placeholder="Thread title" value="{{ old('title') }}" autofocus="">
-                </div>
-                <div class="form-group">
-                    <label for="body">Body</label>
-                    <textarea name="body" id="body" class="form-control" rows="5" placeholder="Thread body">{{ old('body') }}</textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success">Publish</button>
-                </div>
+                @include('threads.partials._formCreate', [
+                    'title' => old('title'),
+                    'body' => old('body'),
+                    'button' => 'Publish',
+                ])
+
             </form>
         </div>
     </div>

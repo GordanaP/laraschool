@@ -19,19 +19,12 @@
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
 
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title"  class="form-control" placeholder="Thread title" value="{{ old('title') ?? $thread->title }}" autofocus="">
-                </div>
-                <div class="form-group">
-                    <label for="body">Body</label>
-                    <textarea name="body" id="body" class="form-control" rows="5" placeholder="Thread body">{{ old('body') ?? $thread->body }}</textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success">
-                        Save changes
-                    </button>
-                </div>
+                @include('threads.partials._formCreate', [
+                    'title' => old('title') ?? $thread->title,
+                    'body' => old('body') ?? $thread->body,
+                    'button' => 'Publish',
+                ])
+
             </form>
         </div>
     </div>

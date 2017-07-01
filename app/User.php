@@ -37,8 +37,8 @@ class User extends Authenticatable
         return $this->hasMany(Reply::class);
     }
 
-    public function createThread($thread)
+    public function createThread($fields)
     {
-        $this->threads()->create($thread);
+            return $this->threads()->create($fields);
     }
 }
