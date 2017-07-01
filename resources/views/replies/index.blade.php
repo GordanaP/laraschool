@@ -1,5 +1,5 @@
 @if (!Request::is('threads'))
-    @forelse ($thread->replies as $reply)
+    @forelse ($thread->replies->load('user') as $reply)
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a href="#">
