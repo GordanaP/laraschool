@@ -3,7 +3,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a href="#">
-                    {{ $reply->user->name }}
+                    {{ $reply->user_name }}
                 </a>
                 {{ $reply->created }}
             </div>

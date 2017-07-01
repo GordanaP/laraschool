@@ -6,7 +6,7 @@ trait UserAttributes
 {
     public function getUserNameAttribute()
     {
-        return ucfirst($this->user->name);
+        return '@'.$this->user->name;
     }
 }
 
