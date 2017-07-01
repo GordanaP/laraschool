@@ -63,7 +63,7 @@ class ThreadController extends Controller
      */
     public function edit(Thread $thread)
     {
-        //
+        return view('threads.edit', compact('thread'));
     }
 
     /**
@@ -75,7 +75,10 @@ class ThreadController extends Controller
      */
     public function update(ThreadRequest $request, Thread $thread)
     {
-        //
+        $thread->update($request->all());
+
+        flash()->success('The thread has been updated');
+        return redirect($thread->path('show'));
     }
 
     /**
@@ -86,6 +89,9 @@ class ThreadController extends Controller
      */
     public function destroy(Thread $thread)
     {
-        //
+        $thread->delete();
+
+        flash()->success('The thread has been deleted');
+        return redirect()->route('threads.index');
     }
 }

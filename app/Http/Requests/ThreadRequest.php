@@ -23,10 +23,24 @@ class ThreadRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|max:80|regex:/^[a-zA-Z0-9,.?!:() ]+$/|unique:threads,title',
-            'body' => 'required',
-        ];
+        switch ($this->method())
+        {
+            case 'POST':
+                return [
+                    'title' => 'required|max:80|regex:/^[a-zA-Z0-9,.?!:() ]+$/|unique:threads,title',
+                    'body' => 'required',
+                ];
+                break;
+
+            case 'PUT':
+            case 'PATCH':
+                return [
+                    'title' => 'required|max:80|regex:/^[a-zA-Z0-9,.?!:() ]+$/|unique:threads,title,'.$this->thread->id,
+                    'body' => 'required',
+                ];
+                break;
+        }
+
     }
 
     /**
