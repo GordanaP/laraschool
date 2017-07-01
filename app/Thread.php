@@ -2,12 +2,13 @@
 
 namespace App;
 
-use App\Traits\TimeAttributes;
+use App\Traits\ModelAttributes;
+use App\Traits\ThreadReplies;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-    use TimeAttributes;
+    use ThreadReplies, ModelAttributes;
 
     protected $fillable = [
         'title', 'body'
@@ -18,17 +19,14 @@ class Thread extends Model
         return route('threads.'.$name, $this->id);
     }
 
-    public function replies()
-    {
-        return $this->hasMany(Reply::class);
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-
-
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }
 

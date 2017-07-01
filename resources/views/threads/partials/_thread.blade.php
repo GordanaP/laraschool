@@ -1,4 +1,3 @@
-<!-- Single thread -->
 <div class="panel panel-default thread__panel">
     <div class="panel-heading">
         <a href="{{ $thread->path('show') }}">
@@ -6,7 +5,7 @@
         </a>
         <p>
             <a href="#">
-                {{ $thread->user->name }}
+                {{ $thread->user_name }}
             </a>
             {{ $thread->created_format }}
         </p>
@@ -21,11 +20,8 @@
     </div>
 </div>
 
-@if (!Request::is('threads'))
-    @forelse ($thread->replies as $reply)
-        @include('replies.partials._reply')
-    @empty
-        The thread has no replies.
-    @endforelse
-@endif
+<!-- Replies list-->
+@include('replies.index')
 
+<!-- Reply form -->
+@include('replies.create')

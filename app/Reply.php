@@ -3,14 +3,15 @@
 namespace App;
 
 use App\Traits\TimeAttributes;
+use App\Traits\UserAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-    use TimeAttributes;
+    use TimeAttributes, UserAttributes;
 
     protected $fillable = [
-        'body'
+        'body', 'user_id'
     ];
 
     public function user()

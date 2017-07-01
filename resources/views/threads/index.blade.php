@@ -9,7 +9,7 @@
     <!-- Threads list-->
     @forelse ($threads as $thread)
 
-        <!-- Single thread -->
+        <!-- Single thread  with replies-->
         @include('threads.partials._thread')
 
     @empty

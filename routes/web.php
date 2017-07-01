@@ -1,9 +1,9 @@
 <?php
 
-//Auth
+// Auth
 Auth::routes();
 
-//Page
+// Page
 Route::as('pages.')->group(function(){
     Route::name('index')->get('/', 'PageController@index');
     Route::name('home')->get('/home', 'PageController@home');
@@ -11,3 +11,6 @@ Route::as('pages.')->group(function(){
 
 // Thread
 Route::resource('/threads', 'ThreadController');
+
+// Reply
+Route::resource('{thread}/replies', 'ReplyController');

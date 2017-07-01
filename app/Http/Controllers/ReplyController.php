@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReplyRequest;
 use App\Reply;
+use App\Thread;
+use Auth;
 use Illuminate\Http\Request;
 
 class ReplyController extends Controller
@@ -12,7 +15,7 @@ class ReplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Thread $thread)
     {
         //
     }
@@ -22,7 +25,7 @@ class ReplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Thread $thread)
     {
         //
     }
@@ -33,9 +36,15 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReplyRequest $request, Thread $thread)
     {
-        //
+        $thread->addReply([
+            'body' => $request->body,
+            'user_id' => Auth::id(),
+        ]);
+
+        flash()->success('Thank you for participating in the thread. Your reply will be posted as soon as possible');
+        return back();
     }
 
     /**
@@ -55,7 +64,7 @@ class ReplyController extends Controller
      * @param  \App\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reply $reply)
+    public function edit(Thread $thread, Reply $reply)
     {
         //
     }
@@ -67,7 +76,7 @@ class ReplyController extends Controller
      * @param  \App\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reply $reply)
+    public function update(ReplyRequest $request, Thread $thread, Reply $reply)
     {
         //
     }
@@ -78,7 +87,7 @@ class ReplyController extends Controller
      * @param  \App\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reply $reply)
+    public function destroy(Thread $thread, Reply $reply)
     {
         //
     }
