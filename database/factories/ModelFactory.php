@@ -14,6 +14,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+// Category
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->word,
+    ];
+});
+
+
 // Thread
 $factory->define(App\Thread::class, function (Faker\Generator $faker) {
 
@@ -22,6 +31,9 @@ $factory->define(App\Thread::class, function (Faker\Generator $faker) {
         'body' => $faker->paragraph,
         'user_id' => function(){
             return factory(App\User::class)->create()->id;
+        },
+        'category_id' => function(){
+            return factory(App\Category::class)->create()->id;
         },
     ];
 });

@@ -21,6 +21,7 @@
                 @include('threads.partials._formCreate', [
                     'title' => old('title'),
                     'body' => old('body'),
+                    'category_id' => old('category_id'),
                     'button' => 'Publish',
                 ])
 

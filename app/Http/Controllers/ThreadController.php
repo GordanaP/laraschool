@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\ThreadRequest;
 use App\Thread;
 use Auth;

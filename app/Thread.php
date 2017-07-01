@@ -11,12 +11,24 @@ class Thread extends Model
     use ThreadReplies, ModelAttributes;
 
     protected $fillable = [
-        'title', 'body'
+        'title', 'body', 'category_id'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::observe(\App\Observers\ThreadObserver::class);
+    }
 
     public function path($name)
     {
-        return route('threads.'.$name, $this->id);
+        return route('threads.'.$name, $this->slug);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     public function user()
@@ -27,6 +39,11 @@ class Thread extends Model
     public function replies()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
 

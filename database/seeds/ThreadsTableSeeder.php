@@ -12,7 +12,9 @@ class ThreadsTableSeeder extends Seeder
      */
     public function run()
     {
+
         factory(App\Thread::class)->create();
+
         factory(App\Reply::class)->create();
     }
 }

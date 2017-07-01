@@ -22,6 +22,7 @@
                 @include('threads.partials._formCreate', [
                     'title' => old('title') ?? $thread->title,
                     'body' => old('body') ?? $thread->body,
+                    'category_id' => old('category_id') ?? $thread->category_id,
                     'button' => 'Publish',
                 ])
 
