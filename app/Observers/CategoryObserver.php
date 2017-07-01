@@ -8,11 +8,6 @@ class CategoryObserver
 {
     public function creating(Category $category)
     {
-        $category->slug = str_slug($category->title);
-    }
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
+        $category->slug = str_slug($category->name);
     }
 }

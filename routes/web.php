@@ -14,3 +14,6 @@ Route::resource('/threads', 'ThreadController');
 
 // Reply
 Route::resource('{thread}/replies', 'ReplyController');
+
+//
+Route::resource('categories', 'CategoryController');

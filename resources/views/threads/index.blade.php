@@ -4,8 +4,6 @@
 
 @section('content')
 
-    <h2>Threads</h2>
-
     <!-- Threads list-->
     @forelse ($threads as $thread)
 

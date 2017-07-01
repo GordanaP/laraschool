@@ -8,6 +8,9 @@
                 {{ $thread->user_name }}
             </a>
             {{ $thread->created_format }}
+            <a href="{{ $thread->category->path('show') }}">
+                {{ $thread->category->name }}
+            </a>
         </p>
     </div>
 

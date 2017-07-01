@@ -16,7 +16,7 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        $threads = Thread::with('user')->latest()->get();
+        $threads = Thread::with('user', 'category')->latest()->get();
 
         return view('threads.index', compact('threads'));
     }

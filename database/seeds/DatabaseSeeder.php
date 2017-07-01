@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
      * @var array
      */
     protected $tables = [
-        'users', 'threads', 'replies'
+        'users',  'categories', 'threads', 'replies',
     ];
 
     /**
@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->cleanDatabase();
 
         $this->call(UsersTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
         $this->call(ThreadsTableSeeder::class);
     }
 

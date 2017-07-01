@@ -19,6 +19,8 @@
                     <a href="{{ route('threads.create') }}" class="btn btn-warning">
                         Start new thread
                     </a>
+
+                    @include('partials.side._categories')
                 </div>
             </div>
         </div>

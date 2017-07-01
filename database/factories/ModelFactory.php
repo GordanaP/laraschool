@@ -6,19 +6,24 @@
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
+    $name = strtolower($faker->firstName);
+
     return [
-        'name' => $faker->firstName,
-        'email' => $faker->unique()->email,
+        'name' => $name,
+        'email' => $name.'@gmail.com',
         'password' => $password ?: $password = bcrypt('123456'),
         'remember_token' => str_random(10),
     ];
 });
 
-// Category
+
+//Category
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
 
+    $name = $faker->word;
+
     return [
-        'name' => $faker->word,
+        'name' => $name,
     ];
 });
 
