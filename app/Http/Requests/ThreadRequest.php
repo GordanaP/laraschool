@@ -29,6 +29,7 @@ class ThreadRequest extends FormRequest
                 return [
                     'title' => 'required|max:80|regex:/^[a-zA-Z0-9,.?!:() ]+$/|unique:threads,title',
                     'body' => 'required',
+                    'category_id' => 'required|exists:categories,id',
                 ];
                 break;
 
@@ -37,10 +38,10 @@ class ThreadRequest extends FormRequest
                 return [
                     'title' => 'required|max:80|regex:/^[a-zA-Z0-9,.?!:() ]+$/|unique:threads,title,'.$this->thread->id,
                     'body' => 'required',
+                    'category_id' => 'required|exists:categories,id',
                 ];
                 break;
         }
-
     }
 
     /**
@@ -52,6 +53,7 @@ class ThreadRequest extends FormRequest
     {
         return [
             'title.regex' => 'Only letters, numbers, punctuation marks and spaces are allowed for the title.',
+            'category_id.exists' => 'The selected category is invalid',
         ];
     }
 }

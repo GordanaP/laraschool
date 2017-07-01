@@ -51,7 +51,7 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show(Category $category, Thread $thread)
     {
         return view('threads.show', compact('thread'));
     }
@@ -62,7 +62,7 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    public function edit(Category $category, Thread $thread)
     {
         return view('threads.edit', compact('thread'));
     }
@@ -74,7 +74,7 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(ThreadRequest $request, Thread $thread)
+    public function update(ThreadRequest $request, Category $category, Thread $thread)
     {
         $thread->update($request->all());
 
@@ -88,7 +88,7 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy(Category $category, Thread $thread)
     {
         $thread->delete();
 

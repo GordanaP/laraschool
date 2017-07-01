@@ -10,7 +10,16 @@ Route::as('pages.')->group(function(){
 });
 
 // Thread
-Route::resource('/threads', 'ThreadController');
+Route::resource('threads', 'ThreadController', [
+    'only' => ['index', 'create', 'store']
+]);
+Route::prefix('threads')->as('threads.')->group(function(){
+    Route::name('show')->get('/{category}/{thread}', 'ThreadController@show');
+    Route::name('edit')->get('/{category}/{thread}/edit', 'ThreadController@edit');
+    Route::name('update')->put('/{category}/{thread}', 'ThreadController@update');
+    Route::name('destroy')->delete('/{category}/{thread}', 'ThreadController@destroy');
+});
+
 
 // Reply
 Route::resource('{thread}/replies', 'ReplyController');

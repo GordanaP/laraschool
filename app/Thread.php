@@ -23,8 +23,14 @@ class Thread extends Model
 
     public function path($name)
     {
-        return route('threads.'.$name, $this->slug);
+        return route('threads.'.$name, [$this->category->slug, $this->slug]);
     }
+
+    public function path_to_reply($name)
+    {
+        return route('replies.'.$name, $this->slug);
+    }
+
 
     public function getRouteKeyName()
     {
