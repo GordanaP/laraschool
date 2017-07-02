@@ -19,6 +19,10 @@ class Thread extends Model
         parent::boot();
 
         static::observe(\App\Observers\ThreadObserver::class);
+
+        static::addGlobalScope('replyCount', function($builder){
+           $builder->withCount('replies');
+        });
     }
 
     public function path($name)
