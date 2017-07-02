@@ -24,10 +24,19 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-
-                <li><a href="{{ route('threads.index') }}">
-                    <i class="icon_group"></i> Forum
-                </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="icon_group"></i> Forum <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('threads.index') }}">All threads</a></li>
+                        @foreach ($categories as $category)
+                            <li><a href="#">
+                                {{ $category->name }}
+                            </a></li>
+                        @endforeach
+                    </ul>
+                </li>
 
                 <!-- Authentication Links -->
                 @if (Auth::guest())
@@ -40,6 +49,11 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('threads.index', append('author', Auth::user()->name)) }}">
+                                    My threads
+                                </a>
+                            </li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();

@@ -4,7 +4,7 @@
     </a>
 
     @foreach ($categories as $category)
-        <a href="{{ $category->path('show') }}" class="list-group-item">
+        <a href="{{ route('threads.index', append('category', $category->slug)) }}" class="list-group-item">
             {{ $category->name }}
         </a>
     @endforeach

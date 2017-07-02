@@ -51,5 +51,10 @@ class Thread extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function scopeFilter($query, $filters)
+    {
+        $filters->apply($query);
+    }
 }
 

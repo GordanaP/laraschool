@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Filters\ThreadFilters;
 use App\Http\Requests\ThreadRequest;
 use App\Thread;
 use Auth;
@@ -14,9 +15,9 @@ class ThreadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ThreadFilters $filters)
     {
-        $threads = Thread::with('user', 'category')->latest()->get();
+        $threads = Thread::with('user', 'category')->latest()->filter($filters)->get();
 
         return view('threads.index', compact('threads'));
     }

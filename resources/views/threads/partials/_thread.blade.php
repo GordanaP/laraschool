@@ -4,11 +4,11 @@
             <h4>{{ $thread->title }}</h4>
         </a>
         <p>
-            <a href="#">
+            <a href="{{ route('threads.index', append('author', $thread->user->name)) }}">
                 {{ $thread->user_name }}
             </a>
             {{ $thread->created_format }}
-            <a href="{{ $thread->category->path('show') }}">
+            <a href="{{ route('threads.index', append('category', $thread->category->slug)) }}">
                 {{ $thread->category->name }}
             </a>
         </p>
