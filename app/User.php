@@ -37,8 +37,15 @@ class User extends Authenticatable
         return $this->hasMany(Reply::class);
     }
 
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
     public function createThread($fields)
     {
             return $this->threads()->create($fields);
     }
+
+
 }

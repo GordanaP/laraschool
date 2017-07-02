@@ -50,7 +50,7 @@
     @endif
 </div>
 
-{{-- Replies list with pagination --}}
+<!-- Replies list with pagination -->
 @if (! Request::is('threads'))
     @forelse ($replies as $reply)
         @include('replies.index')

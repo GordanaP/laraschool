@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Traits\Favorited;
 use App\Traits\TimeAttributes;
 use App\Traits\UserAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-    use TimeAttributes, UserAttributes;
+    use TimeAttributes, UserAttributes, Favorited;
 
     protected $fillable = [
         'body', 'user_id'
@@ -22,5 +23,10 @@ class Reply extends Model
     public function thread()
     {
         return $this->belongsTo(Thread::class);
+    }
+
+    public function favorites()
+    {
+        return $this->morphMany(Favorite::class, 'favorited'); //prefix
     }
 }

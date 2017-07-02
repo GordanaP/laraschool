@@ -17,7 +17,7 @@ class ThreadController extends Controller
      */
     public function index(ThreadFilters $filters)
     {
-        $threads = Thread::with('user','category')->latest()->filter($filters)->get();
+        $threads = Thread::with('user','category')->filter($filters)->latest()->get();
 
         return view('threads.index', compact('threads'));
     }

@@ -23,5 +23,8 @@ Route::prefix('threads')->as('threads.')->group(function(){
 // Reply
 Route::name('replies.store')->post('/{category}/{thread}/replies', 'ReplyController@store');
 
+// Favorite
+Route::name('favorites.replies.store')->post('/replies/{reply}/favorites', 'FavoriteController@store');
+
 //Category
 Route::resource('categories', 'CategoryController');

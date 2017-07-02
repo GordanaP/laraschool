@@ -20,8 +20,8 @@ class Thread extends Model
 
         static::observe(\App\Observers\ThreadObserver::class);
 
-        static::addGlobalScope('replyCount', function($builder){
-           $builder->withCount('replies');
+        static::addGlobalScope('replyCount', function($query){
+           $query->withCount('replies');
         });
     }
 
@@ -34,7 +34,6 @@ class Thread extends Model
     {
         return route('replies.'.$name, [$this->category->slug, $this->slug]);
     }
-
 
     public function getRouteKeyName()
     {
