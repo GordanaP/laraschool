@@ -28,7 +28,7 @@ class Thread extends Model
 
     public function path_to_reply($name)
     {
-        return route('replies.'.$name, $this->slug);
+        return route('replies.'.$name, [$this->category->slug, $this->slug]);
     }
 
 

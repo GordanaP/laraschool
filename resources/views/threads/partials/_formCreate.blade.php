@@ -10,6 +10,7 @@
     <textarea name="body" id="body" class="form-control" rows="5" placeholder="Thread body">{{ $body }}</textarea>
 </div>
 
+<!-- Category -->
 <div class="form-group">
     <label for="category_id">Category</label>
     <select name="category_id" id="category_id" class="form-control">

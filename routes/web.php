@@ -20,9 +20,8 @@ Route::prefix('threads')->as('threads.')->group(function(){
     Route::name('destroy')->delete('/{category}/{thread}', 'ThreadController@destroy');
 });
 
-
 // Reply
-Route::resource('{thread}/replies', 'ReplyController');
+Route::name('replies.store')->post('/{category}/{thread}/replies', 'ReplyController@store');
 
-//
+//Category
 Route::resource('categories', 'CategoryController');

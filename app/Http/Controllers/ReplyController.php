@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\ReplyRequest;
 use App\Reply;
 use App\Thread;
@@ -36,7 +37,7 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ReplyRequest $request, Thread $thread)
+    public function store(ReplyRequest $request, Category $category, Thread $thread)
     {
         $thread->addReply([
             'body' => $request->body,
