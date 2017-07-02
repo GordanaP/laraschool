@@ -6,23 +6,27 @@
             <h4>{{ $thread->title }}</h4>
         </a>
         <p>
-            <!-- Author -->
-            <a href="{{ route('threads.index', append('author', $thread->user->name)) }}">
-                {{ $thread->user_name }}
-            </a>
+            <div style="display: flex">
+                <div style="flex: 1">
+                    <!-- Author -->
+                    <a href="{{ route('threads.index', append('author', $thread->user->name)) }}">
+                        {{ $thread->user_name }}
+                    </a>
 
-            <!-- Date -->
-            {{ $thread->created_format }}
+                    <!-- Date -->
+                    {{ $thread->created_format }}
 
-            <!-- Category -->
-            <a href="{{ route('threads.index', append('category', $thread->category->slug)) }}">
-                {{ $thread->category->name }}
-            </a>
+                    <!-- Category -->
+                    <a href="{{ route('threads.index', append('category', $thread->category->slug)) }}">
+                        {{ $thread->category->name }}
+                    </a>
+                </div>
 
-            <!-- Replies # -->
-            <a href="#">
-                {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies()->count()) }}
-            </a>
+                <!-- Replies # -->
+                <a href="#">
+                    {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies()->count()) }}
+                </a>
+            </div>
         </p>
     </div>
 

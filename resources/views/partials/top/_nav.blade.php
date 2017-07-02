@@ -24,14 +24,21 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+
+                <!-- Forum -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="icon_group"></i> Forum <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('threads.index') }}">All threads</a></li>
+                        <li><a href="{{ route('threads.index') }}">
+                            All threads</a>
+                        </li>
+                        <li><a href="{{ route('threads.index', append('popular', 1)) }}">
+                            Most popular
+                        </a></li>
                         @foreach ($categories as $category)
-                            <li><a href="#">
+                            <li><a href="{{ route('threads.index', append('category', $category->slug)) }}">
                                 {{ $category->name }}
                             </a></li>
                         @endforeach

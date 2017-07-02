@@ -10,7 +10,7 @@ class ThreadFilters extends Filters
     /**
      * @var array
      */
-    protected $filters = ['author', 'category'];
+    protected $filters = ['author', 'category', 'popular'];
 
     /**
      * Filter the threads by the given category.
@@ -35,4 +35,19 @@ class ThreadFilters extends Filters
 
         return $this->builder->where('user_id', $user->id);
     }
+
+
+    /**
+     * Filter the threads by the number of replies.
+     *
+     */
+    protected function popular()
+    {
+        //clear all orderBy() queries to prevent the overriding of the orderBy('replies_count')
+        $this->builder->getQuery()->orders = [];
+
+        return $this->builder->orderBy('replies_count', 'desc');
+    }
+
+
 }
