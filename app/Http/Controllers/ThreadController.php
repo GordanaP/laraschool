@@ -10,6 +10,8 @@ use Auth;
 
 class ThreadController extends Controller
 {
+    protected $per_page = 1;
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +19,7 @@ class ThreadController extends Controller
      */
     public function index(ThreadFilters $filters)
     {
-        $threads = Thread::filter($filters)->latest()->get();
+        $threads = Thread::filter($filters)->latest()->paginate($this->per_page);
 
         return view('threads.index', compact('threads'));
     }

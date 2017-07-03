@@ -37,6 +37,7 @@ class Thread extends Model
         return route('replies.'.$name, [$this->category->slug, $this->slug]);
     }
 
+
     public function getRouteKeyName()
     {
         return 'slug';

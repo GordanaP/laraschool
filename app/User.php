@@ -2,12 +2,14 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use App\Traits\TimeAttributes;
+use App\Traits\UserAttributes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, TimeAttributes, UserAttributes;
 
     /**
      * The attributes that are mass assignable.
@@ -28,9 +30,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * The route key name for Laravel.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
     public function threads()
     {
-        return $this->hasMany(Thread::class);
+        return $this->hasMany(Thread::class)->latest();
     }
 
     public function replies()

@@ -13,7 +13,7 @@ Route::as('pages.')->group(function(){
 Route::resource('threads', 'ThreadController', [
     'only' => ['index', 'create', 'store']
 ]);
-Route::prefix('threads')->as('threads.')->group(function(){
+Route::as('threads.')->prefix('threads')->group(function(){
     Route::name('show')->get('/{category}/{thread}', 'ThreadController@show');
     Route::name('edit')->get('/{category}/{thread}/edit', 'ThreadController@edit');
     Route::name('update')->put('/{category}/{thread}', 'ThreadController@update');
@@ -28,3 +28,8 @@ Route::name('favorites.replies.store')->post('/replies/{reply}/favorites', 'Favo
 
 //Category
 Route::resource('categories', 'CategoryController');
+
+//Profile
+Route::as('profiles.')->prefix('profiles')->group(function(){
+    Route::as('show')->get("/@{user}", 'ProfileController@show');
+});

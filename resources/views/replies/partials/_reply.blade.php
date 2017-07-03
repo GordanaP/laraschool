@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <!-- Reply body -->
+    <!-- Reply -->
     <div class="panel-body">
         {{ $reply->body }}
     </div>

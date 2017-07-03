@@ -18,9 +18,16 @@ class FavoriteController extends Controller
      */
     public function store(Request $request, Reply $reply)
     {
-        $reply->favoriteBy(Auth::user());
+        if ($reply->isFavoritedBy(Auth::user()))
+        {
+            flash()->error('already liked');
+        }
+        else{
 
-        flash()->success('Your favorite has been added to the reply');
+            $reply->favoriteBy(Auth::user());
+
+            flash()->success('Your favorite has been saved');
+        }
 
         return back();
     }

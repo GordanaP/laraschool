@@ -1,4 +1,4 @@
-<form action="{{ $thread->path_to_reply('store') }}" method="post">
+<form action="{{ $thread->path_to_reply('store') }}" method="POST">
 
     {{ csrf_field() }}
 

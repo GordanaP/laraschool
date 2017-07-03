@@ -44,6 +44,4 @@ class ThreadFilters extends Filters
     {
         return $this->builder->orderBy('replies_count', 'desc');
     }
-
-
 }

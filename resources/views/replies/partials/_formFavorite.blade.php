@@ -7,7 +7,7 @@
         {{ Auth::guest() ? 'disabled' : ' ' }}
         {{ Auth::check() && $reply->isFavoritedBy(Auth::user()) ? 'disabled' : ''}}
     >
-        <i class="icon_heart"></i> {{ $reply->favorites_count }}
+        <i class="icon_heart"></i> {{ $reply->favorites->count() }}
     </button>
 
 </form>
