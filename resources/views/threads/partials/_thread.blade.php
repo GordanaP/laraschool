@@ -24,7 +24,7 @@
 
                 <!-- Replies # -->
                 <a href="#">
-                    {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies()->count()) }}
+                    {{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}
                 </a>
             </div>
         </p>

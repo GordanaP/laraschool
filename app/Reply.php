@@ -15,6 +15,8 @@ class Reply extends Model
         'body', 'user_id'
     ];
 
+    protected $with = ['favorites'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

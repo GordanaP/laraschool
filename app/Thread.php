@@ -14,6 +14,8 @@ class Thread extends Model
         'title', 'body', 'category_id'
     ];
 
+    protected $with = ['user', 'category'];
+
     protected static function boot()
     {
         parent::boot();

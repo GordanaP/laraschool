@@ -4,7 +4,8 @@
 
     <button type="submit" class="btn btn-default btn-sm"
 
-    {{ $reply->isFavoritedBy(Auth::user()) ? 'disabled' : ''}}
+        {{ Auth::guest() ? 'disabled' : ' ' }}
+        {{ Auth::check() && $reply->isFavoritedBy(Auth::user()) ? 'disabled' : ''}}
     >
         <i class="icon_heart"></i> {{ $reply->favorites_count }}
     </button>

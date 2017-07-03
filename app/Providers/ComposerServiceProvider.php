@@ -15,7 +15,17 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('categories', Category::all());
+        View::composer('*', function($view){
+
+            $categories = \Cache::rememberForEver('categories', function(){
+
+                return Category::orderBy('name')->get();
+
+            });
+
+            return $view->with(compact('categories'));
+
+        });
     }
 
     /**

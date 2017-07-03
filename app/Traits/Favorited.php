@@ -9,7 +9,7 @@ trait Favorited
 {
     public function isFavoritedBy($user)
     {
-        return $this->favorites()->where('user_id', $user->id)->exists();
+        return (bool) $this->favorites->where('user_id', $user->id)->count();
     }
 
     public function favoriteBy($user)

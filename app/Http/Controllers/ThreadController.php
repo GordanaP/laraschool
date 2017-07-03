@@ -17,7 +17,7 @@ class ThreadController extends Controller
      */
     public function index(ThreadFilters $filters)
     {
-        $threads = Thread::with('user','category')->filter($filters)->latest()->get();
+        $threads = Thread::filter($filters)->latest()->get();
 
         return view('threads.index', compact('threads'));
     }
@@ -54,7 +54,7 @@ class ThreadController extends Controller
      */
     public function show(Category $category, Thread $thread)
     {
-        $replies = $thread->replies()->with('user')->paginate(1);
+        $replies = $thread->replies()->paginate(1);
 
         return view('threads.show', compact('thread', 'replies'));
     }

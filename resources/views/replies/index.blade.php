@@ -10,7 +10,7 @@
             {{ $reply->created }}
         </div>
 
-        <!-- Favorite form -->
+        <!-- Favorites -->
         <div class="div">
             @include('replies.partials._formFavorite')
         </div>
