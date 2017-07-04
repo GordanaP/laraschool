@@ -10,10 +10,4 @@ class ThreadObserver
     {
         $thread->slug = str_slug($thread->title);
     }
-
-    public function deleting(Thread $thread)
-    {
-        $thread->replies->each->delete();
-    }
-
 }

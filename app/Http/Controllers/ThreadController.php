@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\{Category, Thread};
 use App\Filters\ThreadFilters;
 use App\Http\Requests\ThreadRequest;
-use App\Thread;
 use Auth;
 
 class ThreadController extends Controller
 {
-    protected $per_page = 1;
+    protected $per_page = 10;
 
     /**
      * Display a listing of the resource.
@@ -56,7 +55,7 @@ class ThreadController extends Controller
      */
     public function show(Category $category, Thread $thread)
     {
-        $replies = $thread->replies()->paginate(1);
+        $replies = $thread->replies()->paginate(10);
 
         return view('threads.show', compact('thread', 'replies'));
     }

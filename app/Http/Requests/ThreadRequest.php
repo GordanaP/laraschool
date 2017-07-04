@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Thread;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ThreadRequest extends FormRequest
@@ -27,7 +28,7 @@ class ThreadRequest extends FormRequest
         {
             case 'POST':
                 return [
-                    'title' => 'required|max:80|regex:/^[a-zA-Z0-9,.?!:() ]+$/|unique:threads,title',
+                    'title' => 'required|alpha_spaces|max:80|unique:threads,title',
                     'body' => 'required',
                     'category_id' => 'required|exists:categories,id',
                 ];
@@ -36,7 +37,7 @@ class ThreadRequest extends FormRequest
             case 'PUT':
             case 'PATCH':
                 return [
-                    'title' => 'required|max:80|regex:/^[a-zA-Z0-9,.?!:() ]+$/|unique:threads,title,'.$this->thread->id,
+                    'title' => 'required|alpha_spaces|max:80|unique:threads,title,'.$this->thread->id,
                     'body' => 'required',
                     'category_id' => 'required|exists:categories,id',
                 ];
@@ -52,7 +53,6 @@ class ThreadRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.regex' => 'Only letters, numbers, punctuation marks and spaces are allowed for the title.',
             'category_id.exists' => 'The selected category is invalid',
         ];
     }

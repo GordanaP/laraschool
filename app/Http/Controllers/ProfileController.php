@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Thread;
-use App\User;
+use App\{Thread, User};
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    protected $per_page = 10;
+
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +48,7 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        $threads = $user->threads()->paginate(1);
+        $threads = $user->threads()->paginate($this->per_page);
 
         return view('profiles.show', compact('user', 'threads'));
     }

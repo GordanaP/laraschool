@@ -24,7 +24,7 @@ class Reply extends Model
 
     public function thread()
     {
-        return $this->belongsTo(Thread::class);
+        return $this->belongsTo(Thread::class)->with('user');
     }
 
     public function favorites()

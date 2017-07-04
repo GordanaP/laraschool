@@ -12,7 +12,7 @@
         </div>
 
     @empty
-        There are no threads at present.
+        There are no threads at this time.
     @endforelse
 
     <!-- Pagination -->

@@ -87,6 +87,7 @@ return [
     'unique'               => 'The :attribute has already been taken.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
+    "alpha_spaces"         => 'The :attribute may only contain letters, numbers, punctuation marks, and spaces.',
 
     /*
     |--------------------------------------------------------------------------
