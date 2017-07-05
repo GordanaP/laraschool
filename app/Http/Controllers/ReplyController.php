@@ -39,10 +39,7 @@ class ReplyController extends Controller
      */
     public function store(ReplyRequest $request, Category $category, Thread $thread)
     {
-        $thread->addReply([
-            'body' => $request->body,
-            'user_id' => Auth::id(),
-        ]);
+        $thread->addReply(Auth::user());
 
         flash()->success('Thank you for participating in the thread. Your reply will be posted as soon as possible');
         return back();

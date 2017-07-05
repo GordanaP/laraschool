@@ -10,6 +10,11 @@ class ProfileController extends Controller
 {
     protected $per_page = 10;
 
+    public function __construct()
+    {
+        return $this->middleware('auth')->only('activities');
+    }
+
     /**
      * Display a listing of the resource.
      *

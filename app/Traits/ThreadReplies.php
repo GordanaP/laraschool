@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Reply;
+
 trait ThreadReplies
 {
     public function path_to_reply($name)
@@ -9,9 +11,14 @@ trait ThreadReplies
         return route('replies.'.$name, $this->id);
     }
 
-    public function addReply($reply)
+    public function addReply($user)
     {
-        return $this->replies()->create($reply);
+        $reply = new Reply;
+
+        $reply->body = request()->body;
+        $reply->user()->associate($user);
+
+        return $this->replies()->save($reply);
     }
 
 }

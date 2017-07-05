@@ -19,6 +19,8 @@ trait RecordsActivity
             });
         }
 
+        // delete model activities
+        // delete model-relationship activities in ModelObserver
         static::deleting(function($model){
 
             $model->activities()->delete();
@@ -33,6 +35,7 @@ trait RecordsActivity
     protected function recordsActivity($type)
     {
         $activity = new Activity;
+
         $activity->type = $this->getActivity($type);
         $activity->user()->associate(Auth::user());
 
