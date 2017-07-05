@@ -3,12 +3,13 @@
 namespace App;
 
 use App\Traits\ModelAttributes;
+use App\Traits\RecordsActivity;
 use App\Traits\ThreadReplies;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-    use ThreadReplies, ModelAttributes;
+    use ThreadReplies, ModelAttributes, RecordsActivity;
 
     protected $fillable = [
         'title', 'body', 'category_id'
@@ -61,6 +62,16 @@ class Thread extends Model
     public function scopeFilter($query, $filters)
     {
         $filters->apply($query);
+    }
+
+    /**
+     * A thread has many activity
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function activities()
+    {
+        return $this->morphMany(Activity::class, 'subject');
     }
 }
 

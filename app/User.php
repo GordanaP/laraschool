@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->hasMany(Favorite::class);
     }
 
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
     public function createThread($fields)
     {
             return $this->threads()->create($fields);

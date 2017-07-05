@@ -30,6 +30,8 @@ Route::name('favorites.replies.store')->post('/replies/{reply}/favorites', 'Favo
 Route::resource('categories', 'CategoryController');
 
 //Profile
-Route::as('profiles.')->prefix('profiles')->group(function(){
-    Route::as('show')->get("/@{user}", 'ProfileController@show');
-});
+Route::name('profiles.show')->get('profiles/@{user}', 'ProfileController@show');
+Route::name('profiles.update')->put('profiles/@{user}', 'ProfileController@update');
+Route::name('profiles.activites')->get('profiles/@{user}/activities', 'ProfileController@activities');
+// Route::name('profiles.show.file')->get('profiles/avatar/@{user}', 'ProfileController@showFile');
+

@@ -62,6 +62,16 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{ route('profiles.activites', Auth::user()->name) }}">
+                                    My activities
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    My profile
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
