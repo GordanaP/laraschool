@@ -60,5 +60,10 @@ class User extends Authenticatable
             return $this->threads()->create($fields);
     }
 
+    public function owns($related)
+    {
+        return $related->user_id == $this->id;
+    }
+
 
 }

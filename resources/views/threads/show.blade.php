@@ -13,13 +13,17 @@
         @include('threads.partials._thread')
 
         <!-- Action buttons -->
+        @can('update', $thread)
         <div class="panel-footer">
             <a href="{{ $thread->path('edit') }}" class="btn btn-warning pull-left">
                 Edit
             </a>
+        @endcan
 
+        @can('delete', $thread)
             @include('threads.partials._formDelete')
         </div>
+        @endcan
 
     </div>
 

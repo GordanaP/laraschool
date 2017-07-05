@@ -11,6 +11,15 @@ class ThreadController extends Controller
 {
     protected $per_page = 10;
 
+    public function __construct()
+    {
+        //Auhtenticate
+        $this->middleware('auth')->only('create', 'store');
+
+        //Authorize
+        $this->authorizeResource(Thread::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -97,6 +106,15 @@ class ThreadController extends Controller
         $thread->delete();
 
         flash()->success('The thread has been deleted');
-        return redirect()->route('threads.index');
+        return redirect()->route('threads.index', append('author', Auth::user()->name));
+    }
+
+    protected function resourceAbilityMap()
+    {
+         return [
+            'edit'    => 'view',
+            'update'  => 'update',
+            'destroy' => 'delete',
+        ];
     }
 }
