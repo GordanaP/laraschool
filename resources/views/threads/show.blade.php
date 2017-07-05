@@ -44,4 +44,7 @@
     <!-- New reply form -->
     @include('replies.create')
 
+    <!-- Flash message -->
+    <flash message="{{ session('flash') }}"></flash>
+
 @endsection

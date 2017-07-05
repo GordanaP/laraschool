@@ -41,8 +41,9 @@ class ReplyController extends Controller
     {
         $thread->addReply(Auth::user());
 
-        flash()->success('Thank you for participating in the thread. Your reply will be posted as soon as possible');
-        return back();
+        //flash()->success('Thank you for participating in the thread. Your reply will be posted as soon as possible');
+        return back()
+            ->with('flash', 'Thank you for participating in the thread. Your reply will be posted as soon as possible');
     }
 
     /**

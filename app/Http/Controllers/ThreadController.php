@@ -52,8 +52,9 @@ class ThreadController extends Controller
     {
         $thread = Auth::user()->createThread($request->all());
 
-        flash()->success('A new thread has been created.');
-        return redirect($thread->path('show'));
+        //flash()->success('A new thread has been published.');
+        return redirect($thread->path('show'))
+            ->with('flash', 'Your thread has been published');
     }
 
     /**
