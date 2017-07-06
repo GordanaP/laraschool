@@ -35,13 +35,17 @@
         <!-- Action buttons -->
         @can('access', $reply)
             <div class="panel-footer">
-                <button type="submit" class="btn btn-warning pull-left"
+                <button class="btn btn-warning pull-left"
                     @click="editing = true"
                 >
                     Edit
                 </button>
 
-                @include('replies.partials._formDelete')
+                <button class="btn btn-danger"
+                    @click="destroy"
+                >
+                    Delete
+                </button>
             </div>
         @endcan
     </div>

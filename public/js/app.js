@@ -41585,7 +41585,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             setTimeout(function () {
                 _this2.show = false;
-            }, 4000);
+            }, 3000);
         }
     }
 });
@@ -42100,7 +42100,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.editing = false;
 
-            flash('Updated!');
+            flash('Your reply has been updated!');
+        },
+        destroy: function destroy() {
+            axios.delete('../../replies/' + this.attributes.id);
+
+            $(this.$el).fadeOut(300, function () {
+                flash('Your reply has been deleted.');
+            });
         }
     }
 });
