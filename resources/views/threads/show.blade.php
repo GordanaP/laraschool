@@ -14,15 +14,15 @@
 
         <!-- Action buttons -->
         @can('update', $thread)
-        <div class="panel-footer">
-            <a href="{{ $thread->path('edit') }}" class="btn btn-warning pull-left">
-                Edit
-            </a>
+            <div class="panel-footer">
+                <a href="{{ $thread->path('edit') }}" class="btn btn-warning pull-left">
+                    Edit
+                </a>
         @endcan
 
         @can('delete', $thread)
-            @include('threads.partials._formDelete')
-        </div>
+                @include('threads.partials._formDelete')
+            </div>
         @endcan
 
     </div>
@@ -32,7 +32,7 @@
 
         @include('replies.partials._reply')
 
-        <!-- Pagination -->
+        <!-- Replies pagination -->
         <div class="pull-right">
             {{ $replies->links() }}
         </div>

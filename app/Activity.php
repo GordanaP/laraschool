@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\TimeAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
+    use TimeAttributes;
+
     protected $fillable = [
         'type'
     ];
@@ -27,4 +30,5 @@ class Activity extends Model
             ->take($take)
             ->get();
     }
+
 }

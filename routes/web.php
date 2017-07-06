@@ -22,6 +22,7 @@ Route::as('threads.')->prefix('threads')->group(function(){
 
 // Reply
 Route::name('replies.store')->post('/{category}/{thread}/replies', 'ReplyController@store');
+Route::name('replies.destroy')->delete('replies/{reply}', 'ReplyController@destroy');
 
 // Favorite
 Route::name('favorites.replies.store')->post('/replies/{reply}/favorites', 'FavoriteController@store');

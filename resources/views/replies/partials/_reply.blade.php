@@ -20,4 +20,11 @@
     <div class="panel-body">
         {{ $reply->body }}
     </div>
+
+    <!-- Action buttons -->
+    @can('access', $reply)
+        <div class="panel-footer">
+            @include('replies.partials._formDelete')
+        </div>
+    @endcan
 </div>

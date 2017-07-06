@@ -18,6 +18,18 @@ class Reply extends Model
 
     protected $with = ['favorites'];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::observe(\App\Observers\ReplyObserver::class);
+    }
+
+    public function path($name)
+    {
+        return route('replies.'.$name, $this->id);
+    }
+
     public function path_to_thread()
     {
         return route('threads.index') .'#reply-'.$this->id;
@@ -47,4 +59,5 @@ class Reply extends Model
     {
         return $this->morphMany(Activity::class, 'subject');
     }
+
 }

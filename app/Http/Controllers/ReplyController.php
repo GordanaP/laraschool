@@ -11,24 +11,13 @@ use Illuminate\Http\Request;
 
 class ReplyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Thread $thread)
+    public function __construct()
     {
-        //
-    }
+        //Auhtenticate
+        $this->middleware('auth')->only('store');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Thread $thread)
-    {
-        //
+        //Authorize
+        $this->authorizeResource(Reply::class);
     }
 
     /**
@@ -41,21 +30,10 @@ class ReplyController extends Controller
     {
         $thread->addReply(Auth::user());
 
-        //flash()->success('Thank you for participating in the thread. Your reply will be posted as soon as possible');
         return back()
             ->with('flash', 'Thank you for participating in the thread. Your reply will be posted as soon as possible');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Reply  $reply
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reply $reply)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -86,8 +64,20 @@ class ReplyController extends Controller
      * @param  \App\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread, Reply $reply)
+    public function destroy(Reply $reply)
     {
-        //
+        $reply->delete();
+
+        return back()
+            ->with('flash', 'Your reply has been deleted.');
+    }
+
+    protected function resourceAbilityMap()
+    {
+         return [
+            'edit'    => 'access',
+            'update'  => 'access',
+            'destroy' => 'access',
+        ];
     }
 }
