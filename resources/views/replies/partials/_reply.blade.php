@@ -15,7 +15,8 @@
 
             <!-- Favorites -->
             <div class="div">
-                @include('replies.partials._formFavorite')
+                <favorite :reply="{{ $reply }}"></favorite>
+                {{-- @include('replies.partials._formFavorite') --}}
             </div>
         </div>
 

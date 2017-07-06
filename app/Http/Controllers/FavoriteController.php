@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -18,17 +22,28 @@ class FavoriteController extends Controller
      */
     public function store(Request $request, Reply $reply)
     {
-        if ($reply->isFavoritedBy(Auth::user()))
+        if ($reply->isFavorited())
         {
-            flash()->error('already liked');
+            flash()->error('Already favorited');
         }
         else{
 
-            $reply->favoriteBy(Auth::user());
+            $reply->favorite();
 
             flash()->success('Your favorite has been saved');
         }
 
         return back();
+    }
+
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Reply  $reply
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Reply $reply)
+    {
+        $reply->favorites()->where('user_id', Auth::id())->delete();
     }
 }

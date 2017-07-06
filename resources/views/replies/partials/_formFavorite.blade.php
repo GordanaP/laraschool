@@ -1,4 +1,4 @@
-<form action="{{ route('favorites.replies.store', $reply->id) }}" method="POST">
+{{-- <form action="{{ route('favorites.replies.store', $reply->id) }}" method="POST">
 
     {{ csrf_field() }}
 
@@ -7,7 +7,7 @@
         {{ Auth::guest() ? 'disabled' : ' ' }}
         {{ Auth::check() && $reply->isFavoritedBy(Auth::user()) ? 'disabled' : ''}}
     >
-        <i class="icon_heart"></i> {{ $reply->favorites->count() }}
+        <i class="icon_heart"></i> {{ $reply->favorites_count() }}
     </button>
 
-</form>
+</form> --}}

@@ -27,6 +27,7 @@ Route::name('replies.store')->post('/{category}/{thread}/replies', 'ReplyControl
 
 // Favorite
 Route::name('favorites.replies.store')->post('/replies/{reply}/favorites', 'FavoriteController@store');
+Route::name('favorites.replies.destroy')->delete('/replies/{reply}/favorites', 'FavoriteController@destroy');
 
 //Category
 Route::resource('categories', 'CategoryController');

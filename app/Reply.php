@@ -18,6 +18,8 @@ class Reply extends Model
 
     protected $with = ['favorites'];
 
+    protected $appends = ['favoritesCount', 'IsFavorited'];
+
     protected static function boot()
     {
         parent::boot();
