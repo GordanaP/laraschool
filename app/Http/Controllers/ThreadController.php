@@ -52,7 +52,6 @@ class ThreadController extends Controller
     {
         $thread = Auth::user()->createThread($request->all());
 
-        //flash()->success('A new thread has been published.');
         return redirect($thread->path('show'))
             ->with('flash', 'Your thread has been published');
     }
@@ -92,8 +91,8 @@ class ThreadController extends Controller
     {
         $thread->update($request->all());
 
-        flash()->success('The thread has been updated');
-        return redirect($thread->path('show'));
+        return redirect($thread->path('show'))
+            ->with('flash', 'The thread has been updated');
     }
 
     /**
@@ -113,9 +112,9 @@ class ThreadController extends Controller
     protected function resourceAbilityMap()
     {
          return [
-            'edit'    => 'view',
-            'update'  => 'update',
-            'destroy' => 'delete',
+            'edit'    => 'access',
+            'update'  => 'access',
+            'destroy' => 'access',
         ];
     }
 }

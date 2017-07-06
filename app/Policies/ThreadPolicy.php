@@ -11,38 +11,15 @@ class ThreadPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view the thread.
+     * Determine whether the user can access the thread.
      *
      * @param  \App\User  $user
      * @param  \App\Thread  $thread
      * @return mixed
      */
-    public function view(User $user, Thread $thread)
+    public function access(User $user, Thread $thread)
     {
         return $user->owns($thread);
     }
 
-    /**
-     * Determine whether the user can update the thread.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Thread  $thread
-     * @return mixed
-     */
-    public function update(User $user, Thread $thread)
-    {
-        return $user->owns($thread);
-    }
-
-    /**
-     * Determine whether the user can delete the thread.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Thread  $thread
-     * @return mixed
-     */
-    public function delete(User $user, Thread $thread)
-    {
-        return $user->owns($thread);
-    }
 }

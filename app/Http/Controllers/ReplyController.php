@@ -34,18 +34,6 @@ class ReplyController extends Controller
             ->with('flash', 'Thank you for participating in the thread. Your reply will be posted as soon as possible');
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Reply  $reply
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Thread $thread, Reply $reply)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -53,9 +41,11 @@ class ReplyController extends Controller
      * @param  \App\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function update(ReplyRequest $request, Thread $thread, Reply $reply)
+    public function update(ReplyRequest $request, Reply $reply)
     {
-        //
+        $reply->update([
+            'body' => $request->body
+        ]);
     }
 
     /**
@@ -75,7 +65,6 @@ class ReplyController extends Controller
     protected function resourceAbilityMap()
     {
          return [
-            'edit'    => 'access',
             'update'  => 'access',
             'destroy' => 'access',
         ];

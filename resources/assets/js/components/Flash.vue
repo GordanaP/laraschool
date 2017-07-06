@@ -34,7 +34,7 @@
             },
             hide() {
                 setTimeout(() => {
-                    thi
+                    this.show = false;
                 }, 4000);
             }
         }

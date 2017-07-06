@@ -798,6 +798,7 @@ window.Vue = __webpack_require__(35);
  */
 
 Vue.component('flash', __webpack_require__(36));
+Vue.component('reply', __webpack_require__(79));
 
 var app = new Vue({
   el: '#app'
@@ -41580,8 +41581,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.hide();
         },
         hide: function hide() {
+            var _this2 = this;
+
             setTimeout(function () {
-                thi;
+                _this2.show = false;
             }, 4000);
         }
     }
@@ -42027,6 +42030,80 @@ exports.push([module.i, "\n.alert__flash{\n    position: fixed;\n    right: 25px
 
 // exports
 
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(37)(
+  /* script */
+  __webpack_require__(80),
+  /* template */
+  null,
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\laraschool\\resources\\assets\\js\\components\\Reply.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e6c4ec24", Component.options)
+  } else {
+    hotAPI.reload("data-v-e6c4ec24", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['attributes'],
+
+    data: function data() {
+        return {
+            editing: false,
+            body: this.attributes.body //reply.body
+        };
+    },
+
+
+    methods: {
+        update: function update() {
+
+            //let base_url = 'http://localhost/laraschool/public/';
+
+            axios.patch('../../replies/' + this.attributes.id, {
+                body: this.body
+            });
+
+            this.editing = false;
+
+            flash('Updated!');
+        }
+    }
+});
 
 /***/ })
 /******/ ]);

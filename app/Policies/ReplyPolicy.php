@@ -11,42 +11,6 @@ class ReplyPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view the reply.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Reply  $reply
-     * @return mixed
-     */
-/*    public function view(User $user, Reply $reply)
-    {
-        return $user->owns($reply);
-    }
-*/
-    /**
-     * Determine whether the user can update the reply.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Reply  $reply
-     * @return mixed
-     */
-/*    public function update(User $user, Reply $reply)
-    {
-        return $user->owns($reply);
-    }
-*/
-    /**
-     * Determine whether the user can delete the reply.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Reply  $reply
-     * @return mixed
-     */
-/*    public function delete(User $user, Reply $reply)
-    {
-        return $user->owns($reply);
-    }
-*/
-    /**
      * Determine whether the user can access the reply.
      *
      * @param  \App\User  $user
