@@ -1,11 +1,11 @@
 <script>
 
-    import Favorite from './Favorite.vue';
+    import Favorite from './Favorite.vue'; //child component
 
     export default {
         props: ['attributes'],
 
-        components : { Favorite },
+        components : { Favorite }, //reference the child component
 
         data () {
             return {
@@ -33,6 +33,11 @@
                 $(this.$el).fadeOut(300, () => {
                     flash('Your reply has been deleted.');
                 });
+            },
+            cancel ()
+            {
+                this.body = this.attributes.body;
+                this.editing = false;
             }
         }
     }

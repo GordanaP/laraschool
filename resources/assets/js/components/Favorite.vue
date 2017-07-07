@@ -1,8 +1,8 @@
 <template>
     <div>
-        <button :class="classes" @click="toggle">
+        <button :class="classes" @click="toggleFavorites">
             <i class="icon_heart"></i>
-            <span v-text="favoritesCount"></span>
+            <span v-text="count"></span>
         </button>
     </div>
 </template>
@@ -14,35 +14,38 @@
 
         data () {
             return {
-                favoritesCount: this.reply.favoritesCount,
+                count: this.reply.favoritesCount,
                 isFavorited: this.reply.isFavorited
             }
         },
 
         computed: {
             classes () {
-                return ['btn', this.isFavorited ? 'btn-danger' : 'btn-default'];
+                return [
+                    'btn',
+                    this.isFavorited ? 'btn-danger' : 'btn-default'
+                ];
             },
-
             url () {
                 return '../../replies/' + this.reply.id + '/favorites';
-            }
+            },
         },
+
         methods: {
-            toggle () {
+            toggleFavorites () {
                 this.isFavorited ? this.unfavorite() : this.favorite();
             },
             favorite () {
                 axios.post(this.url);
 
                 this.isFavorited = true;
-                this.favoritesCount++;
+                this.count++;
             },
             unfavorite() {
                 axios.delete(this.url);
 
                 this.isFavorited = false;
-                this.favoritesCount--;
+                this.count--;
             }
         }
     }

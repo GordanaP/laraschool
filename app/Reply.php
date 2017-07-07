@@ -16,16 +16,9 @@ class Reply extends Model
         'body', 'user_id'
     ];
 
-    protected $with = ['favorites'];
+    protected $with = ['favorites', 'user'];
 
-    protected $appends = ['favoritesCount', 'IsFavorited'];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::observe(\App\Observers\ReplyObserver::class);
-    }
+    protected $appends = ['favoritesCount', 'isFavorited']; //custom attributes
 
     public function path($name)
     {

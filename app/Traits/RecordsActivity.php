@@ -21,8 +21,9 @@ trait RecordsActivity
 
         // delete model activities
         // delete model-relationship activities in ModelObserver
-        static::deleting(function($model){
+        static::deleting(function ($model) {
 
+            //event fires on the model
             $model->activities()->delete();
         });
     }

@@ -14,10 +14,11 @@
             </div>
 
             <!-- Favorites -->
-            <div class="div">
-                <favorite :reply="{{ $reply }}"></favorite>
-                {{-- @include('replies.partials._formFavorite') --}}
-            </div>
+            @if (Auth::check())
+                <div class="div">
+                    <favorite :reply="{{ $reply }}"></favorite>
+                </div>
+            @endif
         </div>
 
         <!-- Reply -->
@@ -27,7 +28,7 @@
                     <textarea class="form-control" v-model="body"></textarea>
                 </div>
                 <button class="btn-link" @click="update">Update</button>
-                <button class="btn-link" @click="editing = false">Cancel</button>
+                <button class="btn-link" @click="cancel">Cancel</button>
             </div>
 
             <div v-else v-text="body"></div>

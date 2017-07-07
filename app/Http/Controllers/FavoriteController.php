@@ -20,20 +20,9 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Reply $reply)
+    public function store(Reply $reply)
     {
-        if ($reply->isFavorited())
-        {
-            flash()->error('Already favorited');
-        }
-        else{
-
-            $reply->favorite();
-
-            flash()->success('Your favorite has been saved');
-        }
-
-        return back();
+        $reply->favorite();
     }
 
      /**
@@ -44,6 +33,6 @@ class FavoriteController extends Controller
      */
     public function destroy(Reply $reply)
     {
-        $reply->favorites()->where('user_id', Auth::id())->delete();
+        $reply->unfavorite();
     }
 }
